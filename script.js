@@ -12,6 +12,9 @@ const loadingSpinner = document.getElementById("loadingSpinner");
 const issuesCounter = document.getElementById("issuesCounter");
 const filterButtons = document.querySelectorAll("#BtnContainer button");
 // 
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+// 
 let allIssues = [];
 let activeFilter = "all";
 
@@ -39,7 +42,6 @@ function getStatusImage(status){
     if(status === "open"){
         return "./assets/Open-Status.png";
     }
-
     return "./assets/Closed-Status.png";
 }
 
@@ -47,7 +49,6 @@ function getCardBorderClass(status){
     if(status === "open"){
         return "border-[#00a96e]";
     }
-
     return "border-[#a855f7]";
 }
 
@@ -55,11 +56,9 @@ function getPriorityBadgeClass(priority){
     if(priority === "high"){
         return "badge-error";
     }
-
     if(priority === "low"){
         return "text-[#9ca3af]";
     }
-
     return "badge-warning";
 }
 
@@ -144,6 +143,17 @@ async function loadIssues(){
     renderIssues();
 }
 
+async function searchIssues(searchText){
+    showLoading();
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`)
+    const data = await res.json();
+    const searchResults = data.data || [];
+    hideLoading();
+    issuesCounter.textContent = searchResults.length;
+    cardContainer.innerHTML = "";
+    displayIssues(searchResults);
+}
+
 function setActiveFilterButton(filter){
     filterButtons.forEach(button => {
         const buttonFilter = getFilterFromButtonId(button.id);
@@ -210,6 +220,17 @@ filterButtons.forEach(button => {
         setActiveFilterButton(activeFilter);
         renderIssues();
     });
+});
+
+searchBtn.addEventListener("click", () => {
+    const searchText = searchInput.value.trim();
+
+    if(searchText === ""){
+        renderIssues();
+    }
+    else{
+        searchIssues(searchText);
+    }
 });
 
 loadIssues();
