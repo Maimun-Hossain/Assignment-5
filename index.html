@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,44 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
     <!-- Font Awesome -->
-     <script src="https://kit.fontawesome.com/e3bfff1f9b.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e3bfff1f9b.js" crossorigin="anonymous"></script>
     <!-- Daisy UI and Tailwind CSS -->
-     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="geist">
-    <h1 class="bg-red-300">GitHub Issues Tracker</h1>
+
+<body class="geist bg-[#f8fafc]">
+    <section id="signInCard" class="py-16 ">
+        <div class="w-lg mx-auto bg-white p-8">
+            <div class="text-center">
+                <img class="mx-auto mb-6" src="./assets/github-logo.png" alt="">
+                <h3 class="mb-1 text-[#1f2937] font-semibold text-2xl">GitHub Issues Tracker</h3>
+                <h5 class="text-[1rem] text-[#64748b]">Sign in to manage your issues</h5>
+            </div>
+            <fieldset class="fieldset">
+
+                <label class="label text-[#1f2937] text-[1rem] font-medium">Username</label>
+                <input id="usernameInput" type="text" class="input w-full text-[#64748b] text-[1rem] mb-4" placeholder="Enter Username" />
+
+                <label class="label text-[#1f2937] text-[1rem] font-medium">Password</label>
+                <input id="passwordInput" type="password" class="input w-full text-[#64748b] text-[1rem]" placeholder="Enter Password" />
+
+                <button onclick="signInBtnFunc('signInBtn')" class="btn btn-neutral mt-4 hover:bg-white hover:text-black">Sign In</button>
+            </fieldset>
+            <div class="divider">OR</div>
+            <div class="text-center">
+                <h6 class="text-[#64748b] text-[0.875rem] mb-2">Demo Credentials:</h6>
+                <div class="p-6 bg-[#f8fafc] rounded-lg">
+                    <p class="text-[#1f2937] text-[0.875rem]">Username: <span class="font-medium">admin</span></p>
+                    <p class="text-[#1f2937] text-[0.875rem]">Password: <span class="font-medium">admin123</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="mainSection" class="hidden">
+        <h1 class="bg-red-500">helooooooooooooo</h1>
+    </section>
     <script src="./script.js"></script>
 </body>
+
 </html>
