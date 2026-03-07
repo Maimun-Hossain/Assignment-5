@@ -73,19 +73,19 @@
         </nav>
         <main>
             <div id="BtnContainer" class="w-[70%] mx-auto flex gap-2 p-6 bg-white rounded-l-lg mb-4 shadow-sm">
-                <button class="btn btn-primary">All</button>
-                <button class="btn btn-outline btn-primary">Open</button>
-                <button class="btn btn-outline btn-primary">Closed</button>
+                <button id="allBtn" class="btn btn-primary">All</button>
+                <button id="openBtn" class="btn btn-outline btn-primary">Open</button>
+                <button id="closedBtn" class="btn btn-outline btn-primary">Closed</button>
 
             </div>
-            <div id="cardContainer" class="w-[70%] mx-auto bg-white rounded-l-lg shadow-lg">
+            <div id="cardsContainer" class="w-[70%] mx-auto bg-white rounded-l-lg shadow-lg">
                 <div class="p-6 flex items-center justify-between">
                     <div class="flex gap-2">
                         <div class="p-3 rounded-full bg-[#ece4ff]">
                             <img src="./assets/Aperture.png" alt="">
                         </div>
                         <div>
-                            <h3 class="text-[#1f2937] text-[1.3rem] font-semibold">50 Issues</h3>
+                            <h3 class="text-[#1f2937] text-[1.3rem] font-semibold"><span id="issuesCounter"></span> Issues</h3>
                             <p class="text-[#64748b] text-[1rem]">Track and manage your project issues</p>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
 
                 <div class="divider m-0"></div>
 
-                <div class="p-6 bg-[#fbfbfb] grid grid-cols-4 gap-4">
+                <div id="cardContainer" class="p-6 bg-[#fbfbfb] grid grid-cols-4 gap-4">
                     <!-- Cards -->
                     <div class="card bg-white shadow-lg w-3xs border-t-[3px] border-[#00a96e] rounded-sm p-4">
                         <div class="flex items-center justify-between mb-3">
@@ -140,7 +140,7 @@
                     <!-- card 3 -->
                     <div class="card bg-white shadow-lg w-3xs border-t-[3px] border-[#a855f7] rounded-sm p-4">
                         <div class="flex items-center justify-between mb-3">
-                            <img src="./assets/Closed- Status .png" alt="">
+                            <img src="./assets/Closed-Status.png" alt="">
                             <div class="badge badge-soft text-[#9ca3af] rounded-4xl uppercase">LOW</div>
                         </div>
                         <h5 class="text-sm font-semibold text-[#1f2937]">Fix navigation menu on mobile devices</h5>
@@ -171,6 +171,11 @@
                         <p class="text-[#64748b] text-xs">1/15/2024</p>
                     </div>
                 </div>
+
+                <div id="loadingSpinner" class="h-[60vh] flex items-center justify-center hidden">
+                    <span class="loading loading-spinner loading-xl"></span>
+                </div>
+                
             </div>
         </main>
     </section>
