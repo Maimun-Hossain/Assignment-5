@@ -237,7 +237,7 @@ function displayIssues(issues){
         const author = issue.author;
         const formattedDate = formatDateOnly(issue.createdAt);
 
-        card.className = `card bg-white shadow-lg w-3xs border-t-[3px] ${borderClass} rounded-sm p-4 cursor-pointer`;
+        card.className = `card bg-white shadow-lg w-full border-t-[3px] ${borderClass} rounded-sm p-4 cursor-pointer`;
         card.innerHTML = `<div class="flex items-center justify-between mb-3">
                             <img src="${statusImage}" alt="">
                             <div class="badge badge-soft ${priorityClass} rounded-4xl uppercase">${issue.priority}</div>
