@@ -15,7 +15,8 @@
 </head>
 
 <body class="geist bg-[#f8fafc]">
-    <section id="signInCard" class="py-16 ">
+    <!-- Sign In Section -->
+    <section id="signInCard" class="py-16 hidden">
         <div class="w-lg mx-auto bg-white p-8">
             <div class="text-center">
                 <img class="mx-auto mb-6" src="./assets/github-logo.png" alt="">
@@ -25,12 +26,15 @@
             <fieldset class="fieldset">
 
                 <label class="label text-[#1f2937] text-[1rem] font-medium">Username</label>
-                <input id="usernameInput" type="text" class="input w-full text-[#64748b] text-[1rem] mb-4" placeholder="Enter Username" />
+                <input id="usernameInput" type="text" class="input w-full text-[#64748b] text-[1rem] mb-4"
+                    placeholder="Enter Username" />
 
                 <label class="label text-[#1f2937] text-[1rem] font-medium">Password</label>
-                <input id="passwordInput" type="password" class="input w-full text-[#64748b] text-[1rem]" placeholder="Enter Password" />
+                <input id="passwordInput" type="password" class="input w-full text-[#64748b] text-[1rem]"
+                    placeholder="Enter Password" />
 
-                <button onclick="signInBtnFunc('signInBtn')" class="btn btn-neutral mt-4 hover:bg-white hover:text-black">Sign In</button>
+                <button onclick="signInBtnFunc('signInBtn')"
+                    class="btn btn-neutral mt-4 hover:bg-white hover:text-black">Sign In</button>
             </fieldset>
             <div class="divider">OR</div>
             <div class="text-center">
@@ -42,8 +46,133 @@
             </div>
         </div>
     </section>
-    <section id="mainSection" class="hidden">
-        <h1 class="bg-red-500">helooooooooooooo</h1>
+
+    <!-- Main Section -->
+    <section id="mainSection" class="">
+        <nav class="bg-white mb-14">
+            <div class="flex items-center justify-between w-[90%] mx-auto py-4">
+                <div class="flex items-center gap-1">
+                    <img class="w-9 h-9" src="./assets/github-logo.png" alt="GitHub Logo">
+                    <h2 class="text-[#1f2937] text-2xl font-semibold">GitHub Issues Tracker</h2>
+                </div>
+                <div class="flex gap-4 items-center">
+                    <label class="input">
+                        <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                stroke="currentColor">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.3-4.3"></path>
+                            </g>
+                        </svg>
+                        <input type="search" required placeholder="Search issues..." />
+                    </label>
+
+                    <button class="btn btn-primary"><i class="fa-solid fa-plus text-xs"></i> New Issue</button>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <div id="BtnContainer" class="w-[70%] mx-auto flex gap-2 p-6 bg-white rounded-l-lg mb-4 shadow-sm">
+                <button class="btn btn-primary">All</button>
+                <button class="btn btn-outline btn-primary">Open</button>
+                <button class="btn btn-outline btn-primary">Closed</button>
+
+            </div>
+            <div id="cardContainer" class="w-[70%] mx-auto bg-white rounded-l-lg shadow-lg">
+                <div class="p-6 flex items-center justify-between">
+                    <div class="flex gap-2">
+                        <div class="p-3 rounded-full bg-[#ece4ff]">
+                            <img src="./assets/Aperture.png" alt="">
+                        </div>
+                        <div>
+                            <h3 class="text-[#1f2937] text-[1.3rem] font-semibold">50 Issues</h3>
+                            <p class="text-[#64748b] text-[1rem]">Track and manage your project issues</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-center">
+                        <div class="flex items-center gap-1">
+                            <div class="w-3 h-3 flex bg-[#00a96e] rounded-full"></div>
+                            <h6 class="inline">Open</h6>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <div class="w-3 h-3 flex bg-[#a855f7] rounded-full"></div>
+                            <h6 class="inline">Closed</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider m-0"></div>
+
+                <div class="p-6 bg-[#fbfbfb] grid grid-cols-4 gap-4">
+                    <!-- Cards -->
+                    <div class="card bg-white shadow-lg w-3xs border-t-[3px] border-[#00a96e] rounded-sm p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <img src="./assets/Open-Status.png" alt="">
+                            <div class="badge badge-soft badge-error rounded-4xl uppercase">HIGH</div>
+                        </div>
+                        <h5 class="text-sm font-semibold text-[#1f2937]">Fix navigation menu on mobile devices</h5>
+                        <p class="text-[0.75rem] text-[#64748b] mt-2 mb-3">The navigation menu doesn't collapse properly
+                            on mobile devices...</p>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <div class="badge badge-soft badge-error uppercase rounded-4xl"><i class="fa-solid fa-bug"></i> BUG</div>
+                            <div class="badge badge-soft badge-warning uppercase rounded-4xl"><i class="fa-solid fa-life-ring"></i> HELP WANTED</div>
+                        </div>
+                        <div class="divider my-4"></div>
+                        <p class="text-[#64748b] text-xs mb-2">#1 by john_doe</p>
+                        <p class="text-[#64748b] text-xs">1/15/2024</p>
+                    </div>
+                    <!-- card 2 -->
+                    <div class="card bg-white shadow-lg w-3xs border-t-[3px] border-[#00a96e] rounded-sm p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <img src="./assets/Open-Status.png" alt="">
+                            <div class="badge badge-soft badge-warning rounded-4xl uppercase">MEDIUM</div>
+                        </div>
+                        <h5 class="text-sm font-semibold text-[#1f2937]">Fix navigation menu on mobile devices</h5>
+                        <p class="text-[0.75rem] text-[#64748b] mt-2 mb-3">The navigation menu doesn't collapse properly
+                            on mobile devices...</p>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <div class="badge badge-soft badge-success uppercase rounded-4xl"><i class="fa-solid fa-wand-magic-sparkles"></i> ENHANCEMENT</div>
+                        </div>
+                        <div class="divider my-4"></div>
+                        <p class="text-[#64748b] text-xs mb-2">#1 by john_doe</p>
+                        <p class="text-[#64748b] text-xs">1/15/2024</p>
+                    </div>
+                    <!-- card 3 -->
+                    <div class="card bg-white shadow-lg w-3xs border-t-[3px] border-[#a855f7] rounded-sm p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <img src="./assets/Closed- Status .png" alt="">
+                            <div class="badge badge-soft text-[#9ca3af] rounded-4xl uppercase">LOW</div>
+                        </div>
+                        <h5 class="text-sm font-semibold text-[#1f2937]">Fix navigation menu on mobile devices</h5>
+                        <p class="text-[0.75rem] text-[#64748b] mt-2 mb-3">The navigation menu doesn't collapse properly
+                            on mobile devices...</p>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <div class="badge badge-soft badge-success uppercase rounded-4xl"><i class="fa-solid fa-wand-magic-sparkles"></i> ENHANCEMENT</div>
+                        </div>
+                        <div class="divider my-4"></div>
+                        <p class="text-[#64748b] text-xs mb-2">#1 by john_doe</p>
+                        <p class="text-[#64748b] text-xs">1/15/2024</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="card bg-white shadow-lg w-3xs border-t-[3px] border-[#00a96e] rounded-sm p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <img src="./assets/Open-Status.png" alt="">
+                            <div class="badge badge-soft badge-error rounded-4xl uppercase">HIGH</div>
+                        </div>
+                        <h5 class="text-sm font-semibold text-[#1f2937]">Fix navigation menu on mobile devices</h5>
+                        <p class="text-[0.75rem] text-[#64748b] mt-2 mb-3">The navigation menu doesn't collapse properly
+                            on mobile devices...</p>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <div class="badge badge-soft badge-error uppercase rounded-4xl"><i class="fa-solid fa-bug"></i> BUG</div>
+                            <div class="badge badge-soft badge-warning uppercase rounded-4xl"><i class="fa-solid fa-life-ring"></i> HELP WANTED</div>
+                        </div>
+                        <div class="divider my-4"></div>
+                        <p class="text-[#64748b] text-xs mb-2">#1 by john_doe</p>
+                        <p class="text-[#64748b] text-xs">1/15/2024</p>
+                    </div>
+                </div>
+            </div>
+        </main>
     </section>
     <script src="./script.js"></script>
 </body>
