@@ -14,20 +14,28 @@ const filterButtons = document.querySelectorAll("#BtnContainer button");
 // 
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
+const issueDetailsModal = document.getElementById("issueDetailsModal");
+const modalIssueTitle = document.getElementById("modalIssueTitle");
+const modalIssueDescription = document.getElementById("modalIssueDescription");
+const modalIssueStatusBadge = document.getElementById("modalIssueStatusBadge");
+const modalIssueMeta = document.getElementById("modalIssueMeta");
+const modalIssueLabels = document.getElementById("modalIssueLabels");
+const modalIssueAssignee = document.getElementById("modalIssueAssignee");
+const modalIssuePriorityBadge = document.getElementById("modalIssuePriorityBadge");
 // 
 let allIssues = [];
 let activeFilter = "all";
 
-// function signInBtnFunc(id){
-//     // console.log(usernameInput.value);
-//     // console.log(passwordInput.value);
+function signInBtnFunc(id){
+    // console.log(usernameInput.value);
+    // console.log(passwordInput.value);
 
-//     if(usernameInput.value === "admin" && passwordInput.value === "admin123"){
-//         // console.log("Bingo");
-//         signInCard.classList.add("hidden");
-//         mainSection.classList.remove("hidden");
-//     }
-// }
+    if(usernameInput.value === "admin" && passwordInput.value === "admin123"){
+        // console.log("Bingo");
+        signInCard.classList.add("hidden");
+        mainSection.classList.remove("hidden");
+    }
+}
 
 function showLoading(){
     loadingSpinner.classList.remove("hidden");
@@ -90,9 +98,9 @@ function getLabelStyle(label){
 
 function createLabelsHtml(labels){
     let labelsHtml = "";
-    const safeLabels = labels || [];
+    const safeLabels = labels;
 
-    for(let i = 0; i < safeLabels.length; i++){
+    for(let i = 0; i<safeLabels.length; i++){
         const label = safeLabels[i];
         const labelStyle = getLabelStyle(label);
 
@@ -102,22 +110,54 @@ function createLabelsHtml(labels){
     return labelsHtml;
 }
 
-function formatAuthorName(author){
-    const words = author.split("_");
-    const formattedWords = [];
-
-    for(let i = 0; i < words.length; i++){
-        const word = words[i];
-        const firstLetterUpper = word.charAt(0).toUpperCase();
-        const restLetters = word.slice(1);
-        formattedWords.push(firstLetterUpper + restLetters);
-    }
-
-    return formattedWords.join(" ");
-}
-
 function formatDateOnly(dateTime){
     return dateTime.split("T")[0];
+}
+
+function getModalStatusInfo(status){
+    if(status === "open"){
+        return {
+            text: "Opened",
+            className: "badge badge-success badge-soft rounded-full px-3"
+        };
+    }
+
+    return {
+        text: "Closed",
+        className: "badge rounded-full px-3 bg-[#a855f7] text-white border-none"
+    };
+}
+
+function getModalPriorityClass(priority){
+    if(priority === "high"){
+        return "badge badge-error rounded-full px-3 text-white";
+    }
+
+    if(priority === "low"){
+        return "badge rounded-full px-3 bg-[#9ca3af] text-white border-none";
+    }
+
+    return "badge badge-warning rounded-full px-3";
+}
+
+function openIssueModal(issue){
+    const status = (issue.status || "closed").toLowerCase();
+    const priority = (issue.priority || "medium").toLowerCase();
+    const author = issue.author;
+    const date = formatDateOnly(issue.createdAt);
+    const modalStatusInfo = getModalStatusInfo(status);
+
+    modalIssueTitle.textContent = issue.title;
+    modalIssueDescription.textContent = issue.description;
+    modalIssueStatusBadge.textContent = modalStatusInfo.text;
+    modalIssueStatusBadge.className = modalStatusInfo.className;
+    modalIssueMeta.textContent = `${modalStatusInfo.text} by ${author} • ${date}`;
+    modalIssueLabels.innerHTML = createLabelsHtml(issue.labels);
+    modalIssueAssignee.textContent = author;
+    modalIssuePriorityBadge.textContent = priority.toUpperCase();
+    modalIssuePriorityBadge.className = getModalPriorityClass(priority);
+
+    issueDetailsModal.showModal();
 }
 
 function getFilterFromButtonId(buttonId){
@@ -194,10 +234,10 @@ function displayIssues(issues){
         const statusImage = getStatusImage(status);
         const priorityClass = getPriorityBadgeClass(issue.priority);
         const labelsHtml = createLabelsHtml(issue.labels);
-        const formattedAuthor = formatAuthorName(issue.author);
+        const author = issue.author;
         const formattedDate = formatDateOnly(issue.createdAt);
 
-        card.className = `card bg-white shadow-lg w-3xs border-t-[3px] ${borderClass} rounded-sm p-4`;
+        card.className = `card bg-white shadow-lg w-3xs border-t-[3px] ${borderClass} rounded-sm p-4 cursor-pointer`;
         card.innerHTML = `<div class="flex items-center justify-between mb-3">
                             <img src="${statusImage}" alt="">
                             <div class="badge badge-soft ${priorityClass} rounded-4xl uppercase">${issue.priority}</div>
@@ -208,8 +248,11 @@ function displayIssues(issues){
                             ${labelsHtml}
                         </div>
                         <div class="divider my-4"></div>
-                        <p class="text-[#64748b] text-xs mb-2">#${issue.id} by ${formattedAuthor}</p>
+                        <p class="text-[#64748b] text-xs mb-2">#${issue.id} by ${author}</p>
                         <p class="text-[#64748b] text-xs">${formattedDate}</p>`;
+        card.addEventListener("click", () => {
+            openIssueModal(issue);
+        });
         cardContainer.appendChild(card);
     }
 }
