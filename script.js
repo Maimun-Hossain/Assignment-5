@@ -1,7 +1,4 @@
-// console.log(document);
-const signInCard = document.getElementById("signInCard");
-const usernameInput = document.getElementById("usernameInput");
-const passwordInput = document.getElementById("passwordInput");
+
 // 
 const mainSection = document.getElementById("mainSection");
 // 
@@ -26,17 +23,6 @@ const modalIssuePriorityBadge = document.getElementById("modalIssuePriorityBadge
 let allIssues = [];
 let activeFilter = "all";
 
-function signInBtnFunc(id){
-    // console.log(usernameInput.value);
-    // console.log(passwordInput.value);
-
-    if(usernameInput.value === "admin" && passwordInput.value === "admin123"){
-        // console.log("Bingo");
-        signInCard.classList.add("hidden");
-        mainSection.classList.remove("hidden");
-    }
-}
-
 function showLoading(){
     loadingSpinner.classList.remove("hidden");
     cardContainer.innerHTML = "";
@@ -47,24 +33,24 @@ function hideLoading(){
 }
 
 function getStatusImage(status){
-    if(status === "open"){
+    if(status == "open"){
         return "./assets/Open-Status.png";
     }
     return "./assets/Closed-Status.png";
 }
 
 function getCardBorderClass(status){
-    if(status === "open"){
+    if(status == "open"){
         return "border-[#00a96e]";
     }
     return "border-[#a855f7]";
 }
 
 function getPriorityBadgeClass(priority){
-    if(priority === "high"){
+    if(priority == "high"){
         return "badge-error";
     }
-    if(priority === "low"){
+    if(priority == "low"){
         return "text-[#9ca3af]";
     }
     return "badge-warning";
@@ -73,23 +59,23 @@ function getPriorityBadgeClass(priority){
 function getLabelStyle(label){
     const labelLower = label.toLowerCase();
 
-    if(labelLower === "bug"){
+    if(labelLower == "bug"){
         return { badgeClass: "badge-error", icon: "bug" };
     }
 
-    if(labelLower === "enhancement"){
+    if(labelLower == "enhancement"){
         return { badgeClass: "badge-success", icon: "wand-magic-sparkles" };
     }
 
-    if(labelLower === "documentation"){
+    if(labelLower == "documentation"){
         return { badgeClass: "badge-primary", icon: "book" };
     }
 
-    if(labelLower === "good first issue"){
+    if(labelLower == "good first issue"){
         return { badgeClass: "badge-secondary", icon: "hand-sparkles" };
     }
 
-    if(labelLower === "help wanted"){
+    if(labelLower == "help wanted"){
         return { badgeClass: "badge-warning", icon: "life-ring" };
     }
 
@@ -115,7 +101,7 @@ function formatDateOnly(dateTime){
 }
 
 function getModalStatusInfo(status){
-    if(status === "open"){
+    if(status == "open"){
         return {
             text: "Opened",
             className: "badge badge-success badge-soft rounded-full px-3"
@@ -129,11 +115,11 @@ function getModalStatusInfo(status){
 }
 
 function getModalPriorityClass(priority){
-    if(priority === "high"){
+    if(priority == "high"){
         return "badge badge-error rounded-full px-3 text-white";
     }
 
-    if(priority === "low"){
+    if(priority == "low"){
         return "badge rounded-full px-3 bg-[#9ca3af] text-white border-none";
     }
 
@@ -161,11 +147,11 @@ function openIssueModal(issue){
 }
 
 function getFilterFromButtonId(buttonId){
-    if(buttonId === "openBtn"){
+    if(buttonId == "openBtn"){
         return "open";
     }
 
-    if(buttonId === "closedBtn"){
+    if(buttonId == "closedBtn"){
         return "closed";
     }
 
@@ -197,7 +183,7 @@ async function searchIssues(searchText){
 function setActiveFilterButton(filter){
     filterButtons.forEach(button => {
         const buttonFilter = getFilterFromButtonId(button.id);
-        const isActive = buttonFilter === filter;
+        const isActive = buttonFilter == filter;
 
         if(isActive){
             button.classList.remove("btn-outline");
@@ -212,11 +198,11 @@ function setActiveFilterButton(filter){
 function renderIssues(){
     let filteredIssues = [];
 
-    if(activeFilter === "all"){
+    if(activeFilter == "all"){
         filteredIssues = allIssues;
     }
     else{
-        filteredIssues = allIssues.filter(issue => issue.status?.toLowerCase() === activeFilter);
+        filteredIssues = allIssues.filter(issue => issue.status?.toLowerCase() == activeFilter);
     }
 
     issuesCounter.textContent = filteredIssues.length;
@@ -268,7 +254,7 @@ filterButtons.forEach(button => {
 searchBtn.addEventListener("click", () => {
     const searchText = searchInput.value.trim();
 
-    if(searchText === ""){
+    if(searchText == ""){
         renderIssues();
     }
     else{
