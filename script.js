@@ -50,7 +50,7 @@ function getPriorityBadgeClass(priority){
     if(priority == "high"){
         return "badge-error";
     }
-    if(priority == "low"){
+    else if(priority == "low"){
         return "text-[#9ca3af]";
     }
     return "badge-warning";
@@ -60,26 +60,32 @@ function getLabelStyle(label){
     const labelLower = label.toLowerCase();
 
     if(labelLower == "bug"){
-        return { badgeClass: "badge-error", icon: "bug" };
+        return { 
+            badgeClass: "badge-error", icon: "bug" 
+        };
     }
 
-    if(labelLower == "enhancement"){
-        return { badgeClass: "badge-success", icon: "wand-magic-sparkles" };
+    else if(labelLower == "enhancement"){
+        return { 
+            badgeClass: "badge-success", icon: "wand-magic-sparkles" 
+        };
     }
 
-    if(labelLower == "documentation"){
-        return { badgeClass: "badge-primary", icon: "book" };
+    else if(labelLower == "documentation"){
+        return { 
+            badgeClass: "badge-primary", icon: "book" 
+        };
     }
 
-    if(labelLower == "good first issue"){
-        return { badgeClass: "badge-secondary", icon: "hand-sparkles" };
+    else if(labelLower == "good first issue"){
+        return { 
+            badgeClass: "badge-secondary", icon: "hand-sparkles" 
+        };
     }
 
-    if(labelLower == "help wanted"){
-        return { badgeClass: "badge-warning", icon: "life-ring" };
-    }
-
-    return { badgeClass: "badge-warning", icon: "life-ring" };
+    return { 
+        badgeClass: "badge-warning", icon: "life-ring" 
+    };
 }
 
 function createLabelsHtml(labels){
@@ -100,6 +106,9 @@ function formatDateOnly(dateTime){
     return dateTime.split("T")[0];
 }
 
+
+// Modal related functions
+
 function getModalStatusInfo(status){
     if(status == "open"){
         return {
@@ -119,7 +128,7 @@ function getModalPriorityClass(priority){
         return "badge badge-error rounded-full px-3 text-white";
     }
 
-    if(priority == "low"){
+    else if(priority == "low"){
         return "badge rounded-full px-3 bg-[#9ca3af] text-white border-none";
     }
 
@@ -127,8 +136,8 @@ function getModalPriorityClass(priority){
 }
 
 function openIssueModal(issue){
-    const status = (issue.status || "closed").toLowerCase();
-    const priority = (issue.priority || "medium").toLowerCase();
+    const status = issue.status.toLowerCase();
+    const priority = issue.priority.toLowerCase();
     const author = issue.author;
     const date = formatDateOnly(issue.createdAt);
     const modalStatusInfo = getModalStatusInfo(status);
@@ -151,7 +160,7 @@ function getFilterFromButtonId(buttonId){
         return "open";
     }
 
-    if(buttonId == "closedBtn"){
+    else if(buttonId == "closedBtn"){
         return "closed";
     }
 
@@ -162,7 +171,7 @@ async function loadIssues(){
     showLoading();
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     const data = await res.json();
-    allIssues = data.data || [];
+    allIssues = data.data;
     // .then((json) => console.log(json.data.length))
     hideLoading();
     setActiveFilterButton(activeFilter);
@@ -173,7 +182,7 @@ async function searchIssues(searchText){
     showLoading();
     const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`)
     const data = await res.json();
-    const searchResults = data.data || [];
+    const searchResults = data.data;
     hideLoading();
     issuesCounter.textContent = searchResults.length;
     cardContainer.innerHTML = "";
@@ -211,7 +220,7 @@ function renderIssues(){
 }
 
 function displayIssues(issues){
-    for(let i = 0; i < issues.length; i++){
+    for(let i=0; i<issues.length; i++){
         const issue = issues[i];
 
         const card = document.createElement("div");
