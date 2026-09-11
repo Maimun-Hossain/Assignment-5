@@ -9,7 +9,7 @@ const Nav = () => {
   return (
     <>
       <nav className=" border-b-2 border-[#F1F5F9]">
-        <div className="navbar relative max-w-[97%] md:max-w-[85%] mx-auto">
+        <div className="navbar p-0 relative max-w-[97%] md:max-w-[85%] mx-auto">
           <div className="navbar-start">
             <div className="dropdown">
               <div
@@ -44,7 +44,7 @@ const Nav = () => {
             <img
               src={logo}
               alt="Logo"
-              className="absolute left-1/3 h-8 w-24 sm:hidden"
+              className="absolute left-1/3 h-8 w-7rem sm:hidden"
             />
           </div>
           <div className="navbar-center hidden lg:flex">
@@ -68,12 +68,12 @@ const Nav = () => {
           </div>
           <div className="navbar-end">
             <a
-              className="btn btn-ghost rounded-4xl h-8 min-h-8 px-2 sm:h-10 sm:min-h-10 sm:px-4"
+              className="btn btn-ghost h-7 min-h-7 rounded-4xl px-1.5 text-[10px] sm:h-9 sm:min-h-9 sm:px-3 sm:text-xs md:h-10 md:min-h-10 md:px-4"
               style={textColor}
             >
               Sign In
             </a>
-            <a className="btn h-8 rounded-4xl bg-[#D91B7E] px-2 font-semibold text-white sm:h-10 sm:min-h-10 sm:px-4">
+            <a className="btn h-7 min-h-7 rounded-4xl bg-[#D91B7E] px-1.5 text-[10px] font-semibold text-white sm:h-9 sm:min-h-9 sm:px-3 sm:text-xs md:h-10 md:min-h-10 md:px-4">
               Sign Up
             </a>
           </div>

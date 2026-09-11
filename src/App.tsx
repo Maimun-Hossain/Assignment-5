@@ -8,8 +8,10 @@ function App() {
   return (
     <>
         <Nav></Nav>
-      <div className='max-w-screen-xl mx-auto'>
-        <Banner></Banner>
+      <div className='md:max-w-[85%] md:mx-auto'>
+        <div>
+          <Banner></Banner>
+        </div>
         <Footer></Footer>
       </div>
     </>
