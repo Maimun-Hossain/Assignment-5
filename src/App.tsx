@@ -9,11 +9,9 @@ function App() {
     <>
         <Nav></Nav>
       <div className='md:max-w-[85%] md:mx-auto'>
-        <div>
-          <Banner></Banner>
-        </div>
-        <Footer></Footer>
+        <Banner></Banner>
       </div>
+        <Footer></Footer>
     </>
   )
 }
