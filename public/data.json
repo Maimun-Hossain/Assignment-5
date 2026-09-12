@@ -57,7 +57,7 @@
     "icon": "https://icon.icepanel.io/Technology/svg/PostgresSQL.svg",
     "rating": 4.9,
     "difficulty": "Intermediate",
-    "badge": "Top SQL"
+    "badge": "Versatile"
   },
   {
     "id": "redis",
@@ -96,7 +96,7 @@
     "description": "A versatile, object-oriented programming language used for building robust and scalable applications.",
     "icon": "https://icon.icepanel.io/Technology/svg/Java.svg",
     "rating": 4.7,
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced",
     "badge": "Popular"
   },
   {
