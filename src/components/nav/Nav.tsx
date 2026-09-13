@@ -8,7 +8,7 @@ const Nav = () => {
   };
   return (
     <>
-      <nav className=" border-b-2 border-[#F1F5F9]">
+      <nav className="sticky top-0 z-50 border-b-2 border-[#F1F5F9] bg-white">
         <div className="navbar p-0 relative max-w-[97%] md:max-w-[85%] mx-auto">
           <div className="navbar-start">
             <div className="dropdown">
