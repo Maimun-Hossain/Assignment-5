@@ -73,7 +73,7 @@ const Nav = () => {
             >
               Sign In
             </a>
-            <a className="btn h-7 min-h-7 rounded-4xl bg-[#D91B7E] px-1.5 text-[10px] font-semibold text-white sm:h-9 sm:min-h-9 sm:px-3 sm:text-xs md:h-10 md:min-h-10 md:px-4">
+            <a className="btn h-7 min-h-7 rounded-4xl gre px-1.5 text-[10px] font-semibold text-white sm:h-9 sm:min-h-9 sm:px-3 sm:text-xs md:h-10 md:min-h-10 md:px-4">
               Sign Up
             </a>
           </div>

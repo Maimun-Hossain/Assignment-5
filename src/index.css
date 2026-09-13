@@ -2,6 +2,7 @@
 @plugin "daisyui" {
    themes: light --default;
 }
-.hello{
-  font-weight: 600;
+.gre{
+  background: linear-gradient(to right, rgba(255,87,34,1) 0%, rgba(216,27,126,1) 100%);
 }
+

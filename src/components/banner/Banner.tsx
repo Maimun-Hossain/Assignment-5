@@ -1,5 +1,6 @@
 import React from "react";
 import banner from "../../assets/banner-stack.png";
+import "../../index.css";
 
 const Banner = () => {
   return (
@@ -20,7 +21,7 @@ const Banner = () => {
               put together the stack that fits your next project.
             </p>
             <div className="flex justify-center gap-3 sm:flex-row md:justify-start sm:gap-3 md:gap-3">
-                <button className="btn bg-[linear-gradient(to_right,rgba(255,87,34,1)_0%,rgba(216,27,126,1)_100%)] text-white rounded-lg mr-0 mb-3 md:mr-4 md:mb-0">
+                <button className="btn gre text-white rounded-lg mr-0 mb-3 md:mr-4 md:mb-0">
               Explore Technologies
             </button>
             <button className="btn border-2 border-[#e5e7ebFF] bg-transparent text-gray-500 rounded-lg">
