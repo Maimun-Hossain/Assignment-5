@@ -30,8 +30,15 @@ const TechCard = ({
   const isInCart = (itemId: string) =>
     cart.some((cartItem) => cartItem.id === itemId);
 
+  const isSelected = isInCart(tech.id);
+
   return (
-    <div className="card border-2 border-[#E2E8F0]" key={tech.id}>
+    <div
+      className={`card border-2  ${
+        isSelected ? "border-[#bbf7d0]" : "border-[#E2E8F0]"
+      }`}
+      key={tech.id}
+    >
       <div className="card-body">
         <div className="flex justify-between">
           <img className="w-10 h-10" src={tech.icon} alt={tech.name} />

@@ -1,7 +1,6 @@
 import { Suspense, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import "./App.css";
 import Technologies from "./components/technologies/Technologies";
 import type { techData } from "./types";
 import Banner from './components/banner/Banner'
