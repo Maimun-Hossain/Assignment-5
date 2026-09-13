@@ -1,8 +1,8 @@
 import { use } from "react";
 import type { techData } from "../../types";
-import star from "../../assets/Symbol.png";
 import cross from "../../assets/xmark.png";
 import { toast } from "react-toastify";
+import TechCard from "./TechCard";
 
 interface TechnologiesProps {
   data: Promise<techData[]>;
@@ -13,15 +13,6 @@ interface TechnologiesProps {
 const Technologies = ({ data, cart, setCart }: TechnologiesProps) => {
   const textColor = { color: "#94a3b8FF" };
   const datas = use(data);
-  const handleAddToCart = (item: techData) => {
-    if (!cart.some((cartItem) => cartItem.id === item.id)) {
-      setCart([...cart, item]);
-      toast.success(`${item.name} added to stack!`);
-    }
-  };
-
-  const isInCart = (itemId: string) =>
-    cart.some((cartItem) => cartItem.id === itemId);
 
   const handleRemoveFromCart = (id: string) => {
     setCart((currentCart) => currentCart.filter((item) => item.id !== id));
@@ -61,53 +52,14 @@ const Technologies = ({ data, cart, setCart }: TechnologiesProps) => {
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
             {datas.map((items) => {
               return (
-                <div className="card border-2 border-[#E2E8F0]" key={items.id}>
-                  <div className="card-body">
-                    <div className="flex justify-between">
-                      <img
-                        className="w-10 h-10"
-                        src={items.icon}
-                        alt={items.name}
-                      />
-                      <span
-                        className={`badge badge-sm rounded-3xl ${badgeStyle[items.badge] || "bg-[#f1f5f9CC] text-[#1e293b]"}`}
-                      >
-                        {items.badge}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <h2 className="text-2xl font-bold">{items.name}</h2>
-                    </div>
-                    <p className="text-sm" style={textColor}>
-                      {items.description}
-                    </p>
-                    <div className="flex justify-between items-center mt-4">
-                      <div className="badge bg-[#f1f5f9CC] rounded-sm">
-                        {items.category}
-                      </div>
-                      <span style={textColor}>{items.difficulty}</span>
-                      <div className="flex items-center gap-1">
-                        <img src={star} alt="Star" />
-                        <span>{items.rating}</span>
-                      </div>
-                    </div>
-                    <div className="mt-6">
-                      <button
-                        onClick={() => handleAddToCart(items)}
-                        disabled={isInCart(items.id)}
-                        className={`btn rounded-lg btn-block ${
-                          isInCart(items.id)
-                            ? "btn-success text-white cursor-not-allowed"
-                            : "btn-neutral"
-                        }`}
-                      >
-                        {isInCart(items.id)
-                          ? "✓ Added to Stack"
-                          : "Add to Stack"}
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                <TechCard
+                  key={items.id}
+                  tech={items}
+                  cart={cart}
+                  setCart={setCart}
+                  badgeStyle={badgeStyle}
+                  textColor={textColor}
+                />
               );
             })}
           </div>

@@ -14,13 +14,13 @@ const Footer = () => {
             </p>
             <ul className="flex gap-4">
               <li>
-                <a href="">GitHub</a>
+                <a className="text-[#475569] font-bold" href="">GitHub</a>
               </li>
               <li>
-                <a href="">Twitter</a>
+                <a className="text-[#475569] font-bold" href="">Twitter</a>
               </li>
               <li>
-                <a href="">LinkedIn</a>
+                <a className="text-[#475569] font-bold" href="">LinkedIn</a>
               </li>
             </ul>
           </aside>

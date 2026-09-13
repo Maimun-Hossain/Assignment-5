@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import "./App.css";
@@ -13,16 +13,18 @@ const dataFetch = async () => {
   const data = await response.json();
   return data;
 };
-const data = dataFetch();
 
 function App() {
+  const [data] = useState(async () => dataFetch());
   const [cart, setCart] = useState<techData[]>([]);
   return (
     <>
       <Nav></Nav>
       <div className="md:max-w-[85%] md:mx-auto"><Banner></Banner></div>
       <div className="md:max-w-[85%] md:mx-auto my-20">
-        <Technologies data={data} cart={cart} setCart={setCart}></Technologies>
+        <Suspense fallback={<span className="loading loading-bars loading-xl"></span>}>
+          <Technologies data={data} cart={cart} setCart={setCart} />
+        </Suspense>
       </div>
       <Footer></Footer>
       <ToastContainer/>
